@@ -1,14 +1,11 @@
 import { streamText, createDataStreamResponse, generateId } from "ai";
-import { getModel } from "./llm-model";
+import { model } from "./llm-model";
 
 // Allow streaming responses up to 300 seconds
 export const maxDuration = 300;
 
 export async function POST(req: Request) {
   const { messages } = await req.json();
-
-  // change to the model you want to use
-  const model = getModel("us.anthropic.claude-3-5-sonnet-20240620-v1:0");
 
   return createDataStreamResponse({
     execute: async (dataStream) => {

@@ -1,6 +1,6 @@
 ## Deploy Your Own
 
-You can deploy your own version of the Next.js AI Chatbot to Vercel with one click:
+You can deploy your own version with the button below
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fgaspar09%2Fai-chatbot-bedrock&env=AWS_REGION,AWS_ACCESS_KEY_ID,AWS_SECRET_ACCESS_KEY&project-name=ai-chatbot-bedrock&repository-name=ai-chatbot-bedrock)
 
@@ -20,3 +20,9 @@ pnpm dev
 ```
 
 Your app template should now be running on [localhost:3000](http://localhost:3000/).
+
+## General Details
+
+The page is at app/page.tsx
+The API route is at app/api/chat/route.ts
+The Model config is at app/api/chat/llm-model.ts

@@ -29,7 +29,7 @@ const bedrock = createAmazonBedrock({
  * @param name - the name of model to use
  * @returns
  */
-export function getModel(name: string) {
+function getModel(name: string) {
   if (name.startsWith("gpt-")) {
     return openai("gpt-4o");
   }
@@ -38,3 +38,6 @@ export function getModel(name: string) {
   }
   return bedrock(name);
 }
+
+// change to the model you want to use
+export const model = getModel("us.anthropic.claude-3-5-sonnet-20240620-v1:0");
