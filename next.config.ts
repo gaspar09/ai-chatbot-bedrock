@@ -1,15 +1,13 @@
-import type { NextConfig } from 'next';
+import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   experimental: {
     ppr: true,
   },
-  images: {
-    remotePatterns: [
-      {
-        hostname: 'avatar.vercel.sh',
-      },
-    ],
+  env: {
+    OTEL_LOG_LEVEL: "all",
+    OTEL_TRACES_SAMPLER: "parentbased_traceidratio",
+    OTEL_TRACES_SAMPLER_ARG: "1",
   },
 };
 
