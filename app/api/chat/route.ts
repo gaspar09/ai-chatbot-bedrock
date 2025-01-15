@@ -1,8 +1,8 @@
 import { streamText, createDataStreamResponse, generateId } from "ai";
 import { model } from "./llm-model";
 
-// Allow streaming responses up to 300 seconds
-export const maxDuration = 300;
+// Allow streaming responses up to 60 seconds
+export const maxDuration = 60;
 
 export async function POST(req: Request) {
   const { messages } = await req.json();
