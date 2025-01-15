@@ -2,7 +2,7 @@
 
 You can deploy your own version of the Next.js AI Chatbot to Vercel with one click:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fgaspar09%2Fai-chatbot&env=AWS_REGION,AWS_ACCESS_KEY_ID,AWS_SECRET_ACCESS_KEY&demo-title=AI%20Chatbot)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fgaspar09%2Fai-chatbot-bedrock&env=AWS_REGION,AWS_ACCESS_KEY_ID,AWS_SECRET_ACCESS_KEY&demo-title=AI%20Chatbot)
 
 ## Running locally
 
