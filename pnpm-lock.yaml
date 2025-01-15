@@ -66,8 +66,8 @@ dependencies:
     specifier: ^0.10.0
     version: 0.10.0
   ai:
-    specifier: 0.0.0-8777c42a-20250115032312
-    version: 0.0.0-8777c42a-20250115032312(react@19.0.0-rc-45804af1-20241021)(zod@3.23.8)
+    specifier: 0.0.0-156c9f7b-20250115085202
+    version: 0.0.0-156c9f7b-20250115085202(react@19.0.0-rc-45804af1-20241021)(zod@3.23.8)
   class-variance-authority:
     specifier: ^0.7.0
     version: 0.7.0
@@ -3026,8 +3026,8 @@ packages:
     hasBin: true
     dev: true
 
-  /ai@0.0.0-8777c42a-20250115032312(react@19.0.0-rc-45804af1-20241021)(zod@3.23.8):
-    resolution: {integrity: sha512-XAw3CvlkGO0qt04zNyASA/EeExTolH5Aoq3aI8hde0OX4R061vzc9bclI0Mzjb3u4jDIKqFWijgmCmAZtANgVQ==}
+  /ai@0.0.0-156c9f7b-20250115085202(react@19.0.0-rc-45804af1-20241021)(zod@3.23.8):
+    resolution: {integrity: sha512-kuZ1uS7hYdzLdMCW7p4QHvLt4z57NQOU4lEg+NL+1pPS0AJBN6X8oxbaSRz64GmOJdTqfugvuNEUk5EwYDH7dw==}
     engines: {node: '>=18'}
     peerDependencies:
       react: ^18 || ^19 || ^19.0.0-rc

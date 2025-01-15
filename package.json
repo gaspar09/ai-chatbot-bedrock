@@ -28,7 +28,7 @@
     "@smithy/node-http-handler": "^4.0.1",
     "@vercel/otel": "^1.10.0",
     "@vercel/postgres": "^0.10.0",
-    "ai": "0.0.0-8777c42a-20250115032312",
+    "ai": "0.0.0-156c9f7b-20250115085202",
     "class-variance-authority": "^0.7.0",
     "classnames": "^2.5.1",
     "clsx": "^2.1.1",
