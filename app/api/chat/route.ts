@@ -20,7 +20,6 @@ const bedrock = createAmazonBedrock({
       connectionTimeout: 60_000_000,
     }),
   },
-  region: "us-east-1",
 });
 
 // Allow streaming responses up to 30 seconds
