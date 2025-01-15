@@ -31,6 +31,12 @@ export async function POST(req: Request) {
   const result = streamText({
     model: bedrock("us.anthropic.claude-3-5-sonnet-20240620-v1:0"),
     messages,
+    experimental_telemetry: {
+      isEnabled: true,
+      recordInputs: false,
+      functionId: "main-stream",
+    },
   });
+
   return result.toDataStreamResponse();
 }
