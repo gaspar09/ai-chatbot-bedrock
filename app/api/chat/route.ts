@@ -1,35 +1,19 @@
 import { streamText, createDataStreamResponse, generateId } from "ai";
-import { createAmazonBedrock } from "@ai-sdk/amazon-bedrock";
-import { NodeHttpHandler } from "@smithy/node-http-handler";
-import https from "https";
+import { getModel } from "./llm-model";
 
 // Allow streaming responses up to 300 seconds
 export const maxDuration = 300;
 
-const bedrock = createAmazonBedrock({
-  bedrockOptions: {
-    requestHandler: new NodeHttpHandler({
-      httpsAgent: new https.Agent({
-        keepAlive: true,
-        maxSockets: 200, // default is 50 per client.
-      }),
-
-      // time limit (ms) for receiving response.
-      requestTimeout: 60_000_000,
-
-      // time limit (ms) for establishing connection.
-      connectionTimeout: 60_000_000,
-    }),
-  },
-});
-
 export async function POST(req: Request) {
   const { messages } = await req.json();
+
+  // change to the model you want to use
+  const model = getModel("us.anthropic.claude-3-5-sonnet-20240620-v1:0");
 
   return createDataStreamResponse({
     execute: async (dataStream) => {
       const result = streamText({
-        model: bedrock("us.anthropic.claude-3-5-sonnet-20240620-v1:0"),
+        model,
         messages,
         experimental_telemetry: {
           isEnabled: true,
