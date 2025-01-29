@@ -29,7 +29,7 @@ const bedrock = createAmazonBedrock({
  * @param name - the name of model to use
  * @returns
  */
-function getModel(name: string) {
+export function getModel(name: string) {
   if (name.startsWith("gpt-")) {
     return openai("gpt-4o");
   }
