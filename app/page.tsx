@@ -19,10 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import {
-  Alert,
-  AlertDescription,
-} from "@/components/ui/alert";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 import { AlertCircle } from "lucide-react";
 
 interface MessageAnnotation {
@@ -44,6 +41,7 @@ export default function Chat() {
     handleSubmit,
     isLoading,
     append,
+    data,
   } = useChat({
     body: {
       provider,
@@ -84,17 +82,15 @@ export default function Chat() {
       <Alert className="mb-4 max-w-2xl w-full">
         <AlertCircle className="h-4 w-4" />
         <AlertDescription>
-          Only one SDK can be used at a time. Please refresh the page after changing SDKs to benchmark against different providers.
+          Only one SDK can be used at a time. Please refresh the page after
+          changing SDKs to benchmark against different providers.
         </AlertDescription>
       </Alert>
       <Card className="w-full max-w-2xl">
         <CardHeader>
           <CardTitle>AI Chatbot</CardTitle>
           <div className="mt-2">
-            <Select
-              value={provider}
-              onValueChange={setProvider}
-            >
+            <Select value={provider} onValueChange={setProvider}>
               <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Select Provider" />
               </SelectTrigger>
@@ -112,19 +108,19 @@ export default function Chat() {
               | undefined;
 
             return (
-            <div
-              key={m.id}
+              <div
+                key={m.id}
                 className={`mb-4 ${
                   m.role === "user" ? "text-right" : "text-left"
-              }`}
-            >
-                <span
-                  className={`inline-block p-2 rounded-lg ${
-                  m.role === "user"
-                      ? "bg-blue-500 text-white"
-                      : "bg-gray-200 text-black"
                 }`}
               >
+                <span
+                  className={`inline-block p-2 rounded-lg ${
+                    m.role === "user"
+                      ? "bg-blue-500 text-white"
+                      : "bg-gray-200 text-black"
+                  }`}
+                >
                   {m.content}
                   {m.isDelta && !m.isDeltaComplete && (
                     <span className="ml-2 animate-pulse">...</span>
@@ -166,10 +162,10 @@ export default function Chat() {
                           {annotation.usage.msToFinish.toFixed(2)}ms
                         </p>
                       </div>
+                    )}
+                  </div>
                 )}
               </div>
-                )}
-            </div>
             );
           })}
           {isLoading && (
