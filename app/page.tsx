@@ -12,6 +12,18 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Alert,
+  AlertDescription,
+} from "@/components/ui/alert";
+import { AlertCircle } from "lucide-react";
 
 interface MessageAnnotation {
   usage: {
@@ -24,6 +36,7 @@ interface MessageAnnotation {
 }
 
 export default function Chat() {
+  const [provider, setProvider] = useState("vercel");
   const {
     messages,
     input,
@@ -31,7 +44,11 @@ export default function Chat() {
     handleSubmit,
     isLoading,
     append,
-  } = useChat();
+  } = useChat({
+    body: {
+      provider,
+    },
+  });
   const [simulateLength, setSimulateLength] = useState("");
   const [expandedMessages, setExpandedMessages] = useState<
     Record<string, boolean>
@@ -63,10 +80,30 @@ export default function Chat() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
+    <div className="flex flex-col items-center justify-center min-h-screen p-4">
+      <Alert className="mb-4 max-w-2xl w-full">
+        <AlertCircle className="h-4 w-4" />
+        <AlertDescription>
+          Only one SDK can be used at a time. Please refresh the page after changing SDKs to benchmark against different providers.
+        </AlertDescription>
+      </Alert>
       <Card className="w-full max-w-2xl">
         <CardHeader>
           <CardTitle>AI Chatbot</CardTitle>
+          <div className="mt-2">
+            <Select
+              value={provider}
+              onValueChange={setProvider}
+            >
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Select Provider" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="vercel">Vercel</SelectItem>
+                <SelectItem value="bedrock">AWS Bedrock</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
         </CardHeader>
         <CardContent className="h-[60vh] overflow-y-auto">
           {messages.map((m) => {
@@ -75,20 +112,23 @@ export default function Chat() {
               | undefined;
 
             return (
-              <div
-                key={m.id}
+            <div
+              key={m.id}
                 className={`mb-4 ${
                   m.role === "user" ? "text-right" : "text-left"
-                }`}
-              >
+              }`}
+            >
                 <span
                   className={`inline-block p-2 rounded-lg ${
-                    m.role === "user"
+                  m.role === "user"
                       ? "bg-blue-500 text-white"
                       : "bg-gray-200 text-black"
-                  }`}
-                >
+                }`}
+              >
                   {m.content}
+                  {m.isDelta && !m.isDeltaComplete && (
+                    <span className="ml-2 animate-pulse">...</span>
+                  )}
                 </span>
                 {m.role === "assistant" && m.annotations && (
                   <div className="mt-2">
@@ -126,10 +166,10 @@ export default function Chat() {
                           {annotation.usage.msToFinish.toFixed(2)}ms
                         </p>
                       </div>
-                    )}
-                  </div>
                 )}
               </div>
+                )}
+            </div>
             );
           })}
           {isLoading && (
