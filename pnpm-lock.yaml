@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@ai-sdk/amazon-bedrock':
-    specifier: ^1.0.8
-    version: 1.0.8(zod@3.23.8)
+    specifier: 2.0.0
+    version: 2.0.0(zod@3.23.8)
   '@ai-sdk/anthropic':
     specifier: ^1.0.8
     version: 1.0.8(zod@3.23.8)
@@ -196,18 +196,18 @@ devDependencies:
 
 packages:
 
-  /@ai-sdk/amazon-bedrock@1.0.8(zod@3.23.8):
-    resolution: {integrity: sha512-xR1xTyzMpzUjKfi+tCPUxs3B5y6UwWg33G63W7AwiXTpo8C7jgf7EFLsdsRX1ivqyXhP0b9U9gSRYTEbiS1sgA==}
+  /@ai-sdk/amazon-bedrock@2.0.0(zod@3.23.8):
+    resolution: {integrity: sha512-JwLPjeCdZUkfGAmYDOxByxS16f+qilZkaGQv25BvYcmO11AzL1gPJ20JDhxMCXnqvpB6eTcECs7vMM1e2UusAg==}
     engines: {node: '>=18'}
     peerDependencies:
       zod: ^3.0.0
     dependencies:
-      '@ai-sdk/provider': 1.0.4
-      '@ai-sdk/provider-utils': 2.0.7(zod@3.23.8)
-      '@aws-sdk/client-bedrock-runtime': 3.734.0
+      '@ai-sdk/provider': 1.0.7
+      '@ai-sdk/provider-utils': 2.1.7(zod@3.23.8)
+      '@smithy/eventstream-codec': 4.0.1
+      '@smithy/util-utf8': 4.0.0
+      aws4fetch: 1.0.20
       zod: 3.23.8
-    transitivePeerDependencies:
-      - aws-crt
     dev: false
 
   /@ai-sdk/anthropic@1.0.8(zod@3.23.8):
@@ -264,6 +264,22 @@ packages:
       zod: 3.23.8
     dev: false
 
+  /@ai-sdk/provider-utils@2.1.7(zod@3.23.8):
+    resolution: {integrity: sha512-5pliIKahXPlx3PZNBL3TtOBosFftoCq8bUNYdLi2M3YPBdQen9G9mR1BCrhC5hhEk4i3XTM8boqYeuRN6kLfsA==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      zod: ^3.0.0
+    peerDependenciesMeta:
+      zod:
+        optional: true
+    dependencies:
+      '@ai-sdk/provider': 1.0.7
+      eventsource-parser: 3.0.0
+      nanoid: 3.3.8
+      secure-json-parse: 2.7.0
+      zod: 3.23.8
+    dev: false
+
   /@ai-sdk/provider@1.0.1:
     resolution: {integrity: sha512-mV+3iNDkzUsZ0pR2jG0sVzU6xtQY5DtSCBy3JFycLp6PwjyLw/iodfL3MwdmMCRJWgs3dadcHejRnMvF9nGTBg==}
     engines: {node: '>=18'}
@@ -273,6 +289,13 @@ packages:
 
   /@ai-sdk/provider@1.0.4:
     resolution: {integrity: sha512-lJi5zwDosvvZER3e/pB8lj1MN3o3S7zJliQq56BRr4e9V3fcRyFtwP0JRxaRS5vHYX3OJ154VezVoQNrk0eaKw==}
+    engines: {node: '>=18'}
+    dependencies:
+      json-schema: 0.4.0
+    dev: false
+
+  /@ai-sdk/provider@1.0.7:
+    resolution: {integrity: sha512-q1PJEZ0qD9rVR+8JFEd01/QM++csMT5UVwYXSN2u54BrVw/D8TZLTeg2FEfKK00DgAx0UtWd8XOhhwITP9BT5g==}
     engines: {node: '>=18'}
     dependencies:
       json-schema: 0.4.0
@@ -3180,6 +3203,10 @@ packages:
     dependencies:
       possible-typed-array-names: 1.1.0
     dev: true
+
+  /aws4fetch@1.0.20:
+    resolution: {integrity: sha512-/djoAN709iY65ETD6LKCtyyEI04XIBP5xVvfmNxsEP0uJB5tyaGBztSryRr4HqMStr9R06PisQE7m9zDTXKu6g==}
+    dev: false
 
   /axe-core@4.10.2:
     resolution: {integrity: sha512-RE3mdQ7P3FRSe7eqCWoeQ/Z9QXrtniSjp1wUjt5nRC3WIpz5rSCve6o3fsZ2aCpJtrZjSZgjwXAoTO5k4tEI0w==}
