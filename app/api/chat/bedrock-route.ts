@@ -2,6 +2,7 @@ import {
   BedrockRuntimeClient,
   ConverseStreamCommand,
 } from "@aws-sdk/client-bedrock-runtime";
+import { model } from "./llm-model";
 
 interface BedrockMetrics {
   startTime: number;
@@ -21,9 +22,6 @@ interface BedrockMetrics {
 const client = new BedrockRuntimeClient({
   region: process.env.AWS_REGION || "us-east-1",
 });
-
-// Model ID for Claude 3
-const modelId = "anthropic.claude-3-sonnet-20240229-v1:0";
 
 export async function handleBedrockChat(messages: any[]) {
   console.log("Bedrock chat handler called with messages:", messages);
@@ -49,7 +47,7 @@ export async function handleBedrockChat(messages: any[]) {
 
   // Create the command
   const command = new ConverseStreamCommand({
-    modelId,
+    modelId: model.modelId,
     messages: conversation,
     inferenceConfig: {
       maxTokens: 2048,
